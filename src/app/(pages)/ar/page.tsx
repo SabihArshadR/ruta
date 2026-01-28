@@ -66,7 +66,7 @@ const Page = () => {
     if (!user) return;
     // Prefer explicitly-selected POI from the query string, otherwise fall back to the next pending POI
     const currentPOI =
-      selectedPoiId !== null ? selectedPoiId - 1 : user.POIsCompleted ?? 0;
+      selectedPoiId !== null ? selectedPoiId - 1 : (user.POIsCompleted ?? 0);
 
     // Only reset if POI actually changed
     if (currentPOIRef.current !== currentPOI) {
@@ -148,61 +148,25 @@ const Page = () => {
     })();
   }, []);
 
-
-  // useEffect(() => {
-  //   if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
-  //     const handleFirstInteraction = () => {
-  //       if (explosionAudioRef.current) {
-  //         explosionAudioRef.current.play().catch(() => {});
-  //         explosionAudioRef.current.pause();
-  //         explosionAudioRef.current.currentTime = 0;
-  //       }
-  //       // this is start
-  //       if (backgroundMusicRef.current && !isAudioPlaying) {
-  //         backgroundMusicRef.current.volume = 0.05;
-  //         backgroundMusicRef.current.loop = true;
-  //         backgroundMusicRef.current
-  //           .play()
-  //           .then(() => setIsAudioPlaying(true))
-  //           .catch(() => {}); // ignore – browser may still block in rare cases
-  //       }
-  //       // this is end
-
-  //       hasAutoPlayed.current = true;
-  //       window.removeEventListener("click", handleFirstInteraction);
-  //       window.removeEventListener("touchstart", handleFirstInteraction);
-  //     };
-  //     window.addEventListener("click", handleFirstInteraction, { once: true });
-  //     window.addEventListener("touchstart", handleFirstInteraction, {
-  //       once: true,
-  //     });
-  //   }
-  // }, [user, locale]);
-
-  // useEffect(() => {
-  //   if (!onLoadPoints && user?.points) setOnLoadPoints(user.points);
-  // }, [user?.points]);
-
-  // Once the very first batch of rocks is on screen (== game start) we can
-  // safely un-mute the audio that was started in muted-autoplay mode.
-
   useEffect(() => {
-    if (!scriptsLoaded || !coinConfig || !backgroundMusicRef.current) return;
-
-    // Only run once.
-    if (hasAutoPlayed.current) return;
-    hasAutoPlayed.current = true;
-
-    try {
-      backgroundMusicRef.current.muted = false;
-      backgroundMusicRef.current.volume = 0.05;
-      setIsAudioPlaying(true);
-    } catch {
-      /* Some platforms may still block – the user will have to un-mute manually */
+    if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
+      const handleFirstInteraction = () => {
+        backgroundMusicRef.current?.play().catch(() => {});
+        if (explosionAudioRef.current) {
+          explosionAudioRef.current.play().catch(() => {});
+          explosionAudioRef.current.pause();
+          explosionAudioRef.current.currentTime = 0;
+        }
+        hasAutoPlayed.current = true;
+        window.removeEventListener("click", handleFirstInteraction);
+        window.removeEventListener("touchstart", handleFirstInteraction);
+      };
+      window.addEventListener("click", handleFirstInteraction, { once: true });
+      window.addEventListener("touchstart", handleFirstInteraction, {
+        once: true,
+      });
     }
-  }, [scriptsLoaded, coinConfig]);
-
-  
+  }, [user, locale]);
 
   // Optimized script loading - only run once
   useEffect(() => {
@@ -251,7 +215,7 @@ const Page = () => {
       try {
         const dracoLoader = new THREE.DRACOLoader();
         dracoLoader.setDecoderPath(
-          "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+          "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
         );
         dracoLoader.preload();
         if (AFRAME.components["gltf-model"]) {
@@ -276,13 +240,13 @@ const Page = () => {
         if (!(window as any).AFRAME) {
           await loadScript("https://aframe.io/releases/1.3.0/aframe.min.js");
           await loadScript(
-            "https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"
+            "https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js",
           );
         }
 
         if (!(window as any).AFRAME.components["particle-system"]) {
           await loadScript(
-            "https://cdn.jsdelivr.net/npm/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js"
+            "https://cdn.jsdelivr.net/npm/aframe-particle-system-component@1.1.3/dist/aframe-particle-system-component.min.js",
           );
         }
 
@@ -301,7 +265,7 @@ const Page = () => {
         // Load DRACOLoader if not already available
         if (!(window as any).THREE?.DRACOLoader) {
           await loadScript(
-            "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"
+            "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js",
           );
         }
 
@@ -323,7 +287,7 @@ const Page = () => {
                         node.material.forEach((mat: any) => {
                           if (mat) {
                             mat.emissive = new (window as any).THREE.Color(
-                              0xffffff
+                              0xffffff,
                             );
                             mat.emissiveIntensity = 0.1;
                             mat.needsUpdate = true;
@@ -480,7 +444,7 @@ const Page = () => {
           if (rockEl) {
             // Verify the rock is still in the current state (prevent race conditions)
             const currentRock = floatingRocksRef.current.find(
-              (r) => r.id === rock.id
+              (r) => r.id === rock.id,
             );
             if (currentRock && !currentRock.disappearing) {
               const handleTap = (e: Event) => {
@@ -592,10 +556,10 @@ const Page = () => {
     // Mark rock as disappearing immediately to prevent double-tap
     // Update ref immediately to prevent race conditions
     floatingRocksRef.current = floatingRocksRef.current.map((r) =>
-      r.id === rockId ? { ...r, disappearing: true } : r
+      r.id === rockId ? { ...r, disappearing: true } : r,
     );
     setFloatingRocks((prev) =>
-      prev.map((r) => (r.id === rockId ? { ...r, disappearing: true } : r))
+      prev.map((r) => (r.id === rockId ? { ...r, disappearing: true } : r)),
     );
 
     const coinValue = rock.coinValue ?? 1;
@@ -604,7 +568,7 @@ const Page = () => {
         "Invalid coin value (undefined/null) for rock:",
         rockId,
         "rock:",
-        rock
+        rock,
       );
       return;
     }
@@ -640,7 +604,7 @@ const Page = () => {
     }
     console.log(
       "Before update - collectedCoinsRef.current:",
-      collectedCoinsRef.current
+      collectedCoinsRef.current,
     );
     console.log("Before update - collectedCoins state:", collectedCoins);
     const newCollectedCoins = [...collectedCoinsRef.current, coinValue];
@@ -648,7 +612,7 @@ const Page = () => {
     setCollectedCoins(newCollectedCoins);
     console.log(
       "After update - collectedCoinsRef.current:",
-      collectedCoinsRef.current
+      collectedCoinsRef.current,
     );
 
     // Calculate totals using the updated array
@@ -709,23 +673,23 @@ const Page = () => {
       particle.setAttribute(
         "geometry",
         `primitive: ${shape}; radius: 0.08; detail: ${Math.floor(
-          Math.random() * 2
-        )}`
+          Math.random() * 2,
+        )}`,
       );
       particle.setAttribute(
         "material",
-        `color: #000000; metalness: 0; roughness: 1; flatShading: true; opacity: 1; transparent: false`
+        `color: #000000; metalness: 0; roughness: 1; flatShading: true; opacity: 1; transparent: false`,
       );
       particle.setAttribute(
         "position",
         `${rockPos.x + (Math.random() - 0.5) * 0.5} ${rockPos.y} ${
           rockPos.z + (Math.random() - 0.5) * 0.5
-        }`
+        }`,
       );
       particle.object3D.rotation.set(
         Math.random() * Math.PI,
         Math.random() * Math.PI,
-        Math.random() * Math.PI
+        Math.random() * Math.PI,
       );
       particle.setAttribute(
         "animation",
@@ -733,11 +697,11 @@ const Page = () => {
           rockPos.y + Math.random() * 2
         } ${
           rockPos.z + (Math.random() - 0.5) * 1
-        }; dur: 800; easing: easeOutCubic`
+        }; dur: 800; easing: easeOutCubic`,
       );
       particle.setAttribute(
         "animation__fade",
-        `property: material.opacity; from: 1; to: 0; dur: 800; easing: linear`
+        `property: material.opacity; from: 1; to: 0; dur: 800; easing: linear`,
       );
 
       sceneEl.appendChild(particle);
@@ -750,16 +714,16 @@ const Page = () => {
     flash.setAttribute("geometry", "primitive: sphere; radius: 0.5");
     flash.setAttribute(
       "material",
-      "color: black; emissive: #000000; opacity: 0.1; transparent: true"
+      "color: black; emissive: #000000; opacity: 0.1; transparent: true",
     );
     flash.setAttribute("position", rockPos);
     flash.setAttribute(
       "animation",
-      "property: scale; from: 0.2 0.2 0.2; to: 2 2 2; dur: 200; easing: easeOutQuad;"
+      "property: scale; from: 0.2 0.2 0.2; to: 2 2 2; dur: 200; easing: easeOutQuad;",
     );
     flash.setAttribute(
       "animation__fade",
-      "property: material.opacity; from: 0.1; to: 0; dur: 200; delay: 100; easing: easeOutQuad;"
+      "property: material.opacity; from: 0.1; to: 0; dur: 200; delay: 100; easing: easeOutQuad;",
     );
     sceneEl.appendChild(flash);
     setTimeout(() => flash.isConnected && flash.remove(), 400);
@@ -767,7 +731,7 @@ const Page = () => {
     const debris = document.createElement("a-entity");
     debris.setAttribute(
       "particle-system",
-      `particleCount: 150; color: #888, #555, #333; size: 0.2; sizeRandomness: 0.5; velocityValue: 0 2 0; velocitySpread: 2 2 2; opacity: 1; opacityRandomness: 0.3; duration: 1;`
+      `particleCount: 150; color: #888, #555, #333; size: 0.2; sizeRandomness: 0.5; velocityValue: 0 2 0; velocitySpread: 2 2 2; opacity: 1; opacityRandomness: 0.3; duration: 1;`,
     );
     debris.setAttribute("position", rockPos);
     sceneEl.appendChild(debris);
