@@ -156,6 +156,17 @@ const Page = () => {
           explosionAudioRef.current.pause();
           explosionAudioRef.current.currentTime = 0;
         }
+        // this is start
+        if (backgroundMusicRef.current && !isAudioPlaying) {
+          backgroundMusicRef.current.volume = 0.05;
+          backgroundMusicRef.current.loop = true;
+          backgroundMusicRef.current
+            .play()
+            .then(() => setIsAudioPlaying(true))
+            .catch(() => {}); // ignore – browser may still block in rare cases
+        }
+        // this is end
+
         hasAutoPlayed.current = true;
         window.removeEventListener("click", handleFirstInteraction);
         window.removeEventListener("touchstart", handleFirstInteraction);
