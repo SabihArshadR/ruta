@@ -149,39 +149,60 @@ const Page = () => {
   }, []);
 
 
-  useEffect(() => {
-    if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
-      const handleFirstInteraction = () => {
-        if (explosionAudioRef.current) {
-          explosionAudioRef.current.play().catch(() => {});
-          explosionAudioRef.current.pause();
-          explosionAudioRef.current.currentTime = 0;
-        }
-        // this is start
-        if (backgroundMusicRef.current && !isAudioPlaying) {
-          backgroundMusicRef.current.volume = 0.05;
-          backgroundMusicRef.current.loop = true;
-          backgroundMusicRef.current
-            .play()
-            .then(() => setIsAudioPlaying(true))
-            .catch(() => {}); // ignore – browser may still block in rare cases
-        }
-        // this is end
+  // useEffect(() => {
+  //   if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
+  //     const handleFirstInteraction = () => {
+  //       if (explosionAudioRef.current) {
+  //         explosionAudioRef.current.play().catch(() => {});
+  //         explosionAudioRef.current.pause();
+  //         explosionAudioRef.current.currentTime = 0;
+  //       }
+  //       // this is start
+  //       if (backgroundMusicRef.current && !isAudioPlaying) {
+  //         backgroundMusicRef.current.volume = 0.05;
+  //         backgroundMusicRef.current.loop = true;
+  //         backgroundMusicRef.current
+  //           .play()
+  //           .then(() => setIsAudioPlaying(true))
+  //           .catch(() => {}); // ignore – browser may still block in rare cases
+  //       }
+  //       // this is end
 
-        hasAutoPlayed.current = true;
-        window.removeEventListener("click", handleFirstInteraction);
-        window.removeEventListener("touchstart", handleFirstInteraction);
-      };
-      window.addEventListener("click", handleFirstInteraction, { once: true });
-      window.addEventListener("touchstart", handleFirstInteraction, {
-        once: true,
-      });
+  //       hasAutoPlayed.current = true;
+  //       window.removeEventListener("click", handleFirstInteraction);
+  //       window.removeEventListener("touchstart", handleFirstInteraction);
+  //     };
+  //     window.addEventListener("click", handleFirstInteraction, { once: true });
+  //     window.addEventListener("touchstart", handleFirstInteraction, {
+  //       once: true,
+  //     });
+  //   }
+  // }, [user, locale]);
+
+  // useEffect(() => {
+  //   if (!onLoadPoints && user?.points) setOnLoadPoints(user.points);
+  // }, [user?.points]);
+
+  // Once the very first batch of rocks is on screen (== game start) we can
+  // safely un-mute the audio that was started in muted-autoplay mode.
+
+  useEffect(() => {
+    if (!scriptsLoaded || !coinConfig || !backgroundMusicRef.current) return;
+
+    // Only run once.
+    if (hasAutoPlayed.current) return;
+    hasAutoPlayed.current = true;
+
+    try {
+      backgroundMusicRef.current.muted = false;
+      backgroundMusicRef.current.volume = 0.05;
+      setIsAudioPlaying(true);
+    } catch {
+      /* Some platforms may still block – the user will have to un-mute manually */
     }
-  }, [user, locale]);
+  }, [scriptsLoaded, coinConfig]);
 
-  useEffect(() => {
-    if (!onLoadPoints && user?.points) setOnLoadPoints(user.points);
-  }, [user?.points]);
+  
 
   // Optimized script loading - only run once
   useEffect(() => {
