@@ -1,0 +1,763 @@
+{
+  "Login": {
+    "button1": "CONNEXION",
+    "button2": "S'INSCRIRE",
+    "enter_credentials": "Veuillez entrer l'email et le mot de passe",
+    "email_not_verified": "Email non vérifié. Veuillez vérifier votre email d'abord.",
+    "login_success": "Connexion réussie !",
+    "login_failed": "Échec de la connexion. Email ou mot de passe incorrect.",
+    "loading": "Connexion en cours...",
+    "or": "OU",
+    "continue_google": "Continuer avec Google",
+    "continue_microsoft": "Continuer avec Microsoft"
+  },
+  "Register": {
+    "field1": "Prénom",
+    "field2": "Nom de famille",
+    "field3": "E-mail",
+    "field4": "Mot de passe",
+    "field5": "Numéro de téléphone portable",
+    "field6": "Lieu d'origine",
+    "check1": "J'accepte de recevoir des newsletters et des promotions de Ajuntament de Canyelles",
+    "check21": "J'ai lu et j'accepte la",
+    "check22": "Politique de confidentialité",
+    "button1": "S'INSCRIRE",
+    "processing": "Traitement",
+    "button2": "JE SUIS DÉJÀ INSCRIT",
+    "enterPassword": "Veuillez entrer un nouveau mot de passe",
+    "enterEmail": "Veuillez entrer votre e-mail",
+    "resetSuccess": "Réinitialisation du mot de passe réussie !",
+    "resetFailed": "Échec de la réinitialisation du mot de passe",
+    "somethingWrong": "Une erreur est survenue",
+    "resetting": "Réinitialisation...",
+    "resetButton": "Réinitialiser le mot de passe",
+    "placeholder": "Entrez le nouveau mot de passe",
+    "sending": "Envoi...",
+    "sendLink": "Envoyer le lien de réinitialisation",
+    "emailSent": "E-mail de réinitialisation envoyé !",
+    "sendFailed": "Échec de l'envoi de l'e-mail de réinitialisation",
+    "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+    "invalidPhone": "Le numéro de téléphone ne peut contenir que '+', des chiffres et des espaces.",
+    "termsRequired": "Vous devez accepter les Conditions générales.",
+    "privacyRequired": "Vous devez accepter la Politique de confidentialité.",
+    "registerSuccess": "Inscription réussie. Veuillez vérifier votre e-mail pour le code de vérification.",
+    "updateSuccess": "Informations mises à jour avec succès.",
+    "updateError": "Échec de la mise à jour des informations.",
+    "generalError": "Une erreur s'est produite.",
+    "enterAddress": "Veuillez entrer votre adresse"
+  },
+  "Verify Email": {
+    "verify_email": "Vérifier l'email",
+    "resend_code": "Renvoyer le code",
+    "loading": "Vérification...",
+    "sending": "Envoi...",
+    "enter_full_code": "Veuillez entrer le code complet",
+    "email_verified": "Email vérifié avec succès !",
+    "already_verified": "Utilisateur déjà vérifié",
+    "verification_failed": "Échec de la vérification. Code incorrect",
+    "something_wrong": "🚨 Quelque chose a mal tourné",
+    "resend_timer": "Renvoi disponible dans {seconds}s",
+    "new_code_sent": "Nouveau code de vérification envoyé à votre email"
+  },
+  "Dashboard": {
+    "card1": "CARTE",
+    "card2": "PROFIL",
+    "card3": "BANDOULIÈRE",
+    "card4": "ARCHIVES HISTORIQUES",
+    "card5": "FAQ",
+    "card6": "SAVOIR-FAIRE",
+    "lang1": "Catalan",
+    "lang2": "Espagnol",
+    "lang3": "Anglais",
+    "lang4": "Français",
+    "complete1": "Félicitations ! Vous avez récolté toutes les pièces romaines et découvert les secrets des chemins de la Pobla de Mafumet. J’espère que vous avez apprécié cette grande aventure. À la prochaine !",
+    "complete2": "Si vous souhaitez rejouer, allez dans le menu et redémarrez le jeu.",
+    "keep_playing": "Continuer",
+    "read_more": "En savoir plus",
+    "historytitle": "ARCHIVES HISTORIQUES",
+    "knowtitle": "EN SAVOIR PLUS",
+    "pic1": "Affiche relative à la construction de défenses (PARES)",
+    "pic2": "Affiche sur la défense côtière (PARES)",
+    "pic3": "Fiche d’observation du croiseur Canarias. 1937",
+    "pic4": "Croiseur Canarias. 1936",
+    "pic5": "Affiche sur les fortifications (PARES)",
+    "pic6": "Canal de navigation des bateaux de pêche militarisés de Vilanova i la Geltrú (Archives militaires générales d’Ávila)",
+    "pic7": "Dessin réalisé par l’équipage du sous-marin franquiste Sanjurjo de la côte de Calafell (Archives générales de la Marine Álvaro de Bazán)",
+    "pic8": "Canon du même type que ceux installés à Calafell en 1937 (INFIETA, J.L. Material fuera de Servicio, éd. Quirón. 2000)",
+    "pic9": "Dessin réalisé par l’équipage du sous-marin franquiste Sanjurjo de la côte de Calafell (Archives générales de la Marine Álvaro de Bazán)",
+    "pic10": "Affiche relative à la défense en général (PARES)",
+    "pic11": "Affiche relative au Corps des Carabiniers (PARES)",
+    "pic12": "Bunker de Calafell (Image d’archive - Archives municipales de Calafell)",
+    "pic13": "Famille Casas Perín. 1953. Enfants, de gauche à droite : Olga, Trinidad, José Matías, Eduardo et Manuela.",
+    "pic14": "Batterie de Calafell (Image d’archive - Archives municipales de Calafell)",
+    "pic15": "Famille Casas Perín. 1951. La mère, Maria Perín Moreno, avec ses cinq enfants. Photographie prise à l’extérieur ouest du bunker de Les Madrigueres.",
+    "pic16": "Affiche relative au Corps des Carabiniers (PARES)",
+    "pic17": "Carte des positions défensives sur la plage de Sant Salvador (Archives militaires générales d’Ávila)",
+    "pic18": "Fiche du croiseur « Almirante Cervera »",
+    "pic19": "Carte des positions défensives dans la zone de la gare de Sant Vicenç (Archives militaires générales d’Ávila)",
+    "pic20": "Affiche relative aux fortifications (PARES)",
+    "pic21": "Affiche relative aux trois armées (PARES)",
+    "pic22": "Plan de la fortification de la Mota de Sant Pere",
+    "pic23": "Affiche relative au Corps des Carabiniers (BPR)",
+    "pic24": "Affiche relative au Corps des Carabiniers (BPR)",
+    "pic25": "Canon de 9 cm du même type que ceux installés à Sitges. Source : INFIETA, J.L. Material fuera de Servicio, éd. Quirón. 2000",
+    "pic26": "Affiche relative aux fortifications (PARES)",
+    "pic27": "Mémorial démocratique",
+    "pic28": "Généralité de Catalogne",
+    "pic29": "Mairie de Cubelles",
+    "pic30": "Institut d’Études du Penedès",
+    "pic31": "Som Experiències"
+  },
+  "Link": {
+    "link1": "https://memoria.gencat.cat/ca/inici",
+    "link2": "https://web.gencat.cat/",
+    "link3": "https://www.cubelles.cat/",
+    "link4": "https://www.iepenedesencs.org/2018/index.php",
+    "link5": "https://somexperiencies.cat/",
+    "title": "Plus d’informations"
+  },
+  "Map": {
+    "first": "PREMIER",
+    "second": "DEUXIÈME",
+    "third": "TROISIÈME",
+    "fourth": "QUATRIÈME",
+    "fifth": "CINQUIÈME",
+    "sixth": "SIXIÈME",
+    "seventh": "SEPTIÈME",
+    "eighth": "HUITIÈME",
+    "ninth": "NEUVIÈME",
+    "tenth": "DIXIÈME",
+    "eleventh": "ONZEIÈME",
+    "twelfth": "DOUZIÈME",
+    "title1": "ARRÊT",
+    "title2": "Les secrets des routes romaines",
+    "first_title": "La défense du littoral du massif du Garraf",
+    "second_title": "Le nid de mitrailleuse de la plage de Balmins",
+    "third_title": "La défense côtière à Sitges",
+    "fourth_title": "Le nid de mitrailleuse de la plage de la Barra",
+    "fifth_title": "Une position du dispositif défensif de Vilanova",
+    "sixth_title": "Vilanova et la nécessité de défendre la côte",
+    "seventh_title": "Une fortification du front maritime de Vilanova",
+    "eighth_title": "La surveillance de la côte de Cubelles",
+    "ninth_title": "Le fortin de la Mota de Sant Pere",
+    "tenth_title": "Cunit et la fortification de la côte catalane",
+    "eleventh_title": "La côte de Calafell",
+    "twelfth_title": "Le fortin des Madrigueres : un espace de vie à El Vendrell",
+    "thirteenth_title": "Une position de défense sur la côte d’El Vendrell",
+    "button": "JOUER",
+    "text1": "UNE POSITION DU DISPOSITIF DÉFENSIF DE VILANOVA",
+    "text2": "Il est clairement établi qu’un lecteur sera distrait par le contenu lisible d’une page lorsqu’il regarde sa mise en page. Le fait d’utiliser..."
+  },
+  "Progress": {
+    "title1": "Bonjour, ",
+    "title2": "EXPLOSIFS DÉSACTIVÉS",
+    "title3": "“Monnaies romaines”",
+    "button1": "PROGRÈS",
+    "title4": "Récompenses du festival",
+    "title5": "Pièces",
+    "title6": "Terminé",
+    "button2": "Découvertes",
+    "button3": "Redémarrage",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "confirmMessage": "Etes-vous sûr de vouloir redémarrer ?",
+    "p1u": "El Garraf",
+    "p1d": "Sitges",
+    "p2u": "Bunker de Balmins",
+    "p2d": "Sitges",
+    "p3u": "Bâtiment Miramar",
+    "p3d": "Sitges",
+    "p4u": "Plage de la Barra",
+    "p4d": "Sitges",
+    "p5u": "Bunker de Punta Mabrera",
+    "p5d": "Vilanova i la Geltrú",
+    "p6u": "Parc de Ribes Roges",
+    "p6d": "Vilanova i la Geltrú",
+    "p7u": "Bunker de Primera Roca",
+    "p7d": "Vilanova i la Geltrú",
+    "p8u": "Bunker à l’embouchure du fleuve Foix",
+    "p8d": "Cubelles",
+    "p9u": "Maison-bunker de la Mota",
+    "p9d": "Cubelles",
+    "p10u": "Fortin du Torrent",
+    "p10d": "Cunit",
+    "p11u": "Promenade maritime",
+    "p11d": "Calafell",
+    "p12u": "Bunker de Les Madrigueres",
+    "p12d": "El Vendrell",
+    "p13u": "Bunker du Francàs",
+    "p13d": "El Vendrell"
+  },
+  "Level": {
+    "title1": "Bonjour, ",
+    "title2": "ÉPOQUE ",
+    "title3": "“Monnaies romaines”",
+    "button": "ÉPOQUE",
+    "row1": "ÂGE CONTEMPORAIN",
+    "row2": "DU REPEUPLEMENT CHRÉTIEN",
+    "row3": "DES SARRASINS",
+    "row4": "DE L’EMPIRE ROMAIN",
+    "rowtitle": "Gagner 1000 pièces"
+  },
+  "StartQuiz": {
+    "title": "GRAND MAGMA",
+    "description": "C'est maintenant le moment de tester vos connaissances sur l'Empire romain en répondant à la question suivante.",
+    "button1": "COMMENCER"
+  },
+  "Quiz": {
+    "title": "Laquelle de ces affirmations n'est PAS vraie ?",
+    "option1": "Les Romains ont construit de longues routes pavées",
+    "option2": "Les Romains ont construit des aqueducs",
+    "option3": "Les Romains ont construit 2 fusées pour aller sur la lune",
+    "option4": "Les Romains n'ont pas construit d'aqueducs"
+  },
+  "DidYouKnow": {
+    "title": "Le saviez-vous ?",
+    "description": "Demain appartient à ceux qui le construisent aujourd'hui. Restez fort avec un objectif, et ne laissez aucune peur obscurcir votre esprit. La force naît de la persévérance et de l'unité.",
+    "button": "ALLONS-Y"
+  },
+  "Classification": {
+    "title": "CLASSEMENT",
+    "tablehead1": "Prénom",
+    "tablehead2": "Nom de famille",
+    "tablehead3": "Pièces",
+    "row1data1": "Craig",
+    "row1data2": "Bloemsma",
+    "row1data3": "1000",
+    "row2data1": "Albert",
+    "row2data2": "Mozé Fàbregasx",
+    "row3data3": "654"
+  },
+  "FAQS": {
+    "title": "FAQ'S",
+    "button1": "FAQ AR",
+    "button2": "FAQ JEU",
+    "button3": "CARTE FAQ",
+    "ar": {
+      "q1": "Qu’est-ce que la réalité augmentée (AR) et comment est-elle utilisée ici ?",
+      "a1": "La réalité augmentée est une technologie qui permet de superposer des éléments numériques — comme des personnages, des objets ou des scènes — à l’environnement réel à travers la caméra de votre téléphone. Dans ce jeu, elle est utilisée pour voir Miula, désactiver des artefacts explosifs et visualiser les objets à collectionner.",
+      "q2": "Peut-on prendre des photos ou des vidéos avec l’AR ?",
+      "a2": "Oui ! Vous pouvez prendre des photos (captures d’écran) et enregistrer des vidéos avec Miula et les différentes expériences en AR, puis les partager. C’est une excellente manière de garder un souvenir et de faire connaître votre aventure.",
+      "q3": "Faut-il télécharger une application ?",
+      "a3": "Non. Il s’agit d’une application web (webapp) : il suffit d’accéder au lien via votre navigateur (Chrome, Safari, etc.). Aucun téléchargement n’est nécessaire.",
+      "q4": "Mon téléphone est-il compatible avec la réalité augmentée ?",
+      "a4": "Cela fonctionne sur la plupart des appareils récents disposant d’une caméra et d’un navigateur à jour. Vous devez autoriser l’accès à la caméra. En cas de problème, essayez un autre navigateur ou un autre appareil.",
+      "q5": "Je ne vois rien lorsque j’ouvre la caméra. Que puis-je faire ?",
+      "a5": "Assurez-vous que :​ ● Vous êtes physiquement arrivé au bon point sur la carte (géolocalisation).​ ● Vous avez autorisé l’utilisation de la caméra.​ ● L’environnement est suffisamment éclairé.​ Si cela ne fonctionne toujours pas, fermez puis rouvrez le navigateur.",
+      "q6": "Une connexion internet est-elle nécessaire pour utiliser l’AR ?",
+      "a6": "Oui. La réalité augmentée se charge dans le navigateur, vous avez donc besoin d’une connexion de données mobiles ou Wi-Fi pendant l’expérience.",
+      "q7": "Est-il sûr d’utiliser la réalité augmentée en marchant ?",
+      "a7": "Oui, mais vous devez rester attentif à votre environnement physique pendant l’utilisation de la caméra. Ne marchez pas en regardant votre téléphone et gardez toujours un œil sur ce qui vous entoure."
+    },
+    "game": {
+      "q1": "Quel est l’objectif du jeu ?",
+      "a1": "L’objectif est d’accompagner Miula à travers treize points géolocalisés, où elle racontera des histoires liées aux différents lieux. Vous devrez désactiver des artefacts explosifs, répondre à des questions et obtenir des objets à collectionner.",
+      "q2": "Comment désactiver les artefacts explosifs et obtenir les objets à collectionner ?",
+      "a2": "Vous devez vous rendre physiquement aux points géolocalisés indiqués sur la carte. Sur place, Miula racontera une histoire et proposera un défi interactif ainsi qu’une question. En les réussissant, vous obtiendrez un objet à collectionner lié à ce point.",
+      "q3": "Que se passe-t-il si j’échoue à un défi ou à une question ?",
+      "a3": "Les défis interactifs sont validés en désactivant un nombre précis d’artefacts explosifs en AR. Le défi ne se termine pas tant qu’ils ne sont pas tous désactivés. En général, il y en a entre six et sept. En cas de mauvaise réponse à une question, le système vous demande de réessayer.",
+      "q4": "Faut-il s’inscrire pour jouer ?",
+      "a4": "Oui, l’inscription est obligatoire pour participer au jeu, accéder aux points en réalité augmentée et débloquer les pièces romaines et les différents objets à collectionner. Cela nous permet de sauvegarder votre progression, de vous offrir une expérience personnalisée et de garantir le bon fonctionnement du système. L’inscription est rapide et ne doit être faite qu’une seule fois.",
+      "q5": "Peut-on jouer en groupe ou en famille ?",
+      "a5": "Oui ! Le jeu est conçu pour être joué en groupe : entre amis, en famille ou dans un cadre scolaire. Un seul téléphone ou une tablette par équipe suffit, ainsi que l’envie de découvrir le territoire ensemble."
+    },
+    "map": {
+      "q1": "Comment fonctionne la carte du jeu ?",
+      "a1": "La carte interactive affiche les points géolocalisés qui composent le parcours. Le contenu en réalité augmentée ne se débloque que lorsque vous arrivez physiquement à un point.",
+      "q2": "Faut-il activer la géolocalisation sur le téléphone ?",
+      "a2": "Oui. Sans la géolocalisation activée, il est impossible de jouer. Le système a besoin de connaître votre position pour vérifier que vous vous êtes correctement déplacé à chaque point. Nous vous recommandons d’activer la localisation avant de commencer le parcours.Comment activer la géolocalisation sur votre appareil : Sur un téléphone Android 1.​ Ouvrez les Paramètres.​ 2.​ Allez dans Localisation.​ 3.​ Activez la Localisation.​ 4.​ Vérifiez que le navigateur (Chrome, Firefox, etc.) dispose de l’autorisation :​ – Paramètres > Applications > [Nom du navigateur] > Autorisations > Localisation > Toujours autoriser ou Autoriser pendant l’utilisation.​ Sur un iPhone 1.​ Ouvrez Réglages.​ 2.​ Allez dans Confidentialité et sécurité > Services de localisation.​ 3.​ Activez les services de localisation.​ 4.​ Accédez aux réglages du navigateur (généralement Safari ou Chrome).​ 5.​ Vérifiez que l’option Localisation est définie sur Lors de l’utilisation.​",
+      "q3": "Que faire si la carte ne me détecte pas correctement ?",
+      "a3": "● Vérifiez que la localisation est bien activée.​ ● Actualisez la page du navigateur.",
+      "q4": "Une connexion internet est-elle nécessaire pour utiliser la carte ?",
+      "a4": "Oui. La webapp nécessite une connexion active pour afficher la carte et valider votre position. Toutefois, la consommation de données est très faible.",
+      "q5": "La carte indique que je ne suis pas au bon endroit, mais je sais que j’y suis. Que faire ?",
+      "a5": "● Déplacez-vous légèrement : le signal GPS peut parfois mettre quelques secondes à se mettre à jour.​ ● Vérifiez que vous n’êtes pas sous une structure ou dans un espace fermé.​ ● Assurez-vous d’avoir une bonne couverture GPS ou réseau mobile.",
+      "q6": "Puis-je faire le parcours dans n’importe quel ordre ?",
+      "a6": "Non. Le parcours est linéaire. Il est nécessaire de suivre l’ordre établi des points, car chaque défi et chaque découverte dépendent du point précédent. La carte n’affichera que le prochain point débloqué et vous ne pourrez pas avancer sans terminer le point en cours."
+    }
+  },
+  "Auth": {
+    "ForgotPassword": "Mot de passe oublié ?",
+    "NoAccount": "Vous n'avez pas de compte ?",
+    "CreateAccount": "Créer un compte",
+    "HaveAccount": "Vous avez déjà un compte ?",
+    "LoginAccount": "Se connecter"
+  },
+  "Amics": {
+    "title": "BANDOULIÈRE",
+    "description": "Ne sois pas triste. Laisse le chagrin passer doucement, car le passé est révolu. Accueille le présent avec courage et sérénité. Laisse l'espoir guider tes pas et l'amour te rendre fort."
+  },
+  "Links": {
+    "GAME": "JEU",
+    "Historical_link": "ARCHIVE HISTORIQUE",
+    "Award_link": "PRIX / RÉCOMPENSES",
+    "Profile_link": "PROFIL",
+    "Ranking_Link": "CLASSEMENT",
+    "LOGOUT_link": "DÉCONNEXION"
+  },
+  "Head": {
+    "title1": "Menu",
+    "title2": "Accès",
+    "title3": "Déconnexion",
+    "heading1": "CanYelles",
+    "heading2": "et L'histoire de la météorite",
+    "back": "Retour"
+  },
+  "Volcano1Quiz1": {
+    "title": "Pourquoi le Garraf était-il un lieu stratégique ?",
+    "option1": "Parce que depuis les zones élevées on pouvait voir loin et prévenir rapidement",
+    "option2": "Parce qu’il y avait de nombreuses plages plates",
+    "option3": "Parce que c’était le principal port de la région",
+    "option4": "Parce qu’il y avait une grande batterie de canons"
+  },
+  "Volcano1Quiz2": {
+    "title": "Que craignait-on sur la côte pendant la guerre civile ?",
+    "option1": "Un débarquement par la mer",
+    "option2": "Un tremblement de terre",
+    "option3": "Une forte chute de neige",
+    "option4": "Une éruption volcanique"
+  },
+  "Volcano1Quiz3": {
+    "title": "Quel rôle jouait le Garraf dans la ligne défensive ?",
+    "option1": "C’était un point d’alerte avancé et de connexion",
+    "option2": "C’était le centre d’un hôpital",
+    "option3": "C’était une usine d’armes",
+    "option4": "C’était un aéroport militaire"
+  },
+
+  "Volcano2Quiz1": {
+    "title": "Que peut-on voir sur la plage de Balmins ?",
+    "option1": "Un ancien nid de mitrailleuse",
+    "option2": "Une tour de contrôle aérien",
+    "option3": "Un phare moderne",
+    "option4": "Un pont en bois"
+  },
+  "Volcano2Quiz2": {
+    "title": "Quelles plages ce bunker protégeait-il ?",
+    "option1": "Balmins et Sant Sebastià",
+    "option2": "Aiguadolç et Ribes Roges",
+    "option3": "Les Anquines et le Francàs",
+    "option4": "Coma-ruga et Sant Salvador"
+  },
+  "Volcano2Quiz3": {
+    "title": "Pourquoi était-il difficile à voir ?",
+    "option1": "Parce qu’il était très bien camouflé",
+    "option2": "Parce qu’il était sous l’eau",
+    "option3": "Parce qu’il était fait de verre",
+    "option4": "Parce qu’il ne s’ouvrait que la nuit"
+  },
+
+  "Volcano3Quiz1": {
+    "title": "Quel événement a déclenché l’alerte sur tout le littoral ?",
+    "option1": "Le bombardement de Roses par le croiseur Canarias",
+    "option2": "Un incendie au Miramar",
+    "option3": "Un tremblement de terre à Sitges",
+    "option4": "Une tempête très violente"
+  },
+  "Volcano3Quiz2": {
+    "title": "Combien de miliciens ont accepté de surveiller la côte de Sitges ?",
+    "option1": "Environ 100",
+    "option2": "Environ 50",
+    "option3": "Environ 20",
+    "option4": "Environ 300"
+  },
+  "Volcano3Quiz3": {
+    "title": "Quelles défenses ont été construites avec des sacs de sable ?",
+    "option1": "Des tranchées et des défenses",
+    "option2": "Des ponts et des routes",
+    "option3": "Des maisons de pêcheurs",
+    "option4": "Des champs cultivés"
+  },
+
+  "Volcano4Quiz1": {
+    "title": "Combien de nids de mitrailleuses ont été construits à Sitges ?",
+    "option1": "Quatre",
+    "option2": "Deux",
+    "option3": "Trois",
+    "option4": "Six"
+  },
+  "Volcano4Quiz2": {
+    "title": "Lequel de ces lieux ne faisait PAS partie des quatre points ?",
+    "option1": "Primera Roca",
+    "option2": "La Barra",
+    "option3": "Balmins",
+    "option4": "Les Anquines"
+  },
+  "Volcano4Quiz3": {
+    "title": "Quel tronçon de côte le nid de la Barra aidait-il à surveiller ?",
+    "option1": "D’Aiguadolç au-delà de Les Anquines",
+    "option2": "De Sant Salvador au Francàs",
+    "option3": "De Vallcarca à Barcelone",
+    "option4": "Du Garraf à Roses"
+  },
+
+  "Volcano5Quiz1": {
+    "title": "Quand de nombreuses défenses ont-elles été construites à Vilanova ?",
+    "option1": "Entre janvier et avril 1937",
+    "option2": "Entre juin et août 1936",
+    "option3": "Entre 1949 et 1950",
+    "option4": "Entre 1891 et 1895"
+  },
+  "Volcano5Quiz2": {
+    "title": "Où se trouvait une batterie d’obusiers ?",
+    "option1": "Sur la plage de Sant Gervasi",
+    "option2": "À Bellamar",
+    "option3": "À la Mota de Sant Pere",
+    "option4": "Dans le bâtiment Miramar"
+  },
+  "Volcano5Quiz3": {
+    "title": "Quels bateaux de pêche patrouillaient la côte ?",
+    "option1": "Maricel et Joven Rosita",
+    "option2": "Betis et Montcabrer",
+    "option3": "Canarias et Terramar",
+    "option4": "Foix et Garraf"
+  },
+
+  "Volcano6Quiz1": {
+    "title": "Que s’est-il passé le 30 octobre 1936 ?",
+    "option1": "Le Canarias a bombardé Roses",
+    "option2": "Le parc a été inauguré",
+    "option3": "Le fort du Francàs a été construit",
+    "option4": "José Matías est né"
+  },
+  "Volcano6Quiz2": {
+    "title": "Qui était convoqué pour travailler aux fortifications ?",
+    "option1": "Les hommes de 18 à 45 ans",
+    "option2": "Tout le monde sans exception",
+    "option3": "Uniquement les enfants",
+    "option4": "Uniquement les personnes de plus de 65 ans"
+  },
+  "Volcano6Quiz3": {
+    "title": "Quel bombardement Vilanova a-t-elle subi ?",
+    "option1": "8 août 1938 (aérien)",
+    "option2": "18 juillet 1936 (maritime)",
+    "option3": "13 septembre 1952 (aérien)",
+    "option4": "30 octobre 1936 (terrestre)"
+  },
+
+  "Volcano7Quiz1": {
+    "title": "Quel était l’objectif de ces bunkers côtiers ?",
+    "option1": "Empêcher les débarquements",
+    "option2": "Faire des pique-niques",
+    "option3": "Stocker de la nourriture",
+    "option4": "Organiser des concerts"
+  },
+  "Volcano7Quiz2": {
+    "title": "Ce bunker était conçu pour…",
+    "option1": "Couvrir un secteur précis et se coordonner avec d’autres positions",
+    "option2": "Être un musée d’art",
+    "option3": "Être une école",
+    "option4": "Être une gare"
+  },
+  "Volcano7Quiz3": {
+    "title": "Que faisait partie du réseau défensif ?",
+    "option1": "La batterie de Sant Gervasi et des patrouilles maritimes",
+    "option2": "Un aéroport et un port commercial",
+    "option3": "Un canal et un barrage",
+    "option4": "Un parc naturel et un zoo"
+  },
+
+  "Volcano8Quiz1": {
+    "title": "Qui surveillait principalement la côte de Cubelles ?",
+    "option1": "Le corps des carabiniers",
+    "option2": "Les pompiers",
+    "option3": "Les enseignants",
+    "option4": "Les randonneurs"
+  },
+  "Volcano8Quiz2": {
+    "title": "Combien de mitrailleuses avait ce nid ?",
+    "option1": "Deux",
+    "option2": "Une",
+    "option3": "Trois",
+    "option4": "Quatre"
+  },
+  "Volcano8Quiz3": {
+    "title": "Où se trouvait l’entrée du bunker ?",
+    "option1": "À l’arrière",
+    "option2": "Sur le toit",
+    "option3": "À l’avant",
+    "option4": "Sous l’eau"
+  },
+
+  "Volcano9Quiz1": {
+    "title": "Où est construit le fortin de la Mota de Sant Pere ?",
+    "option1": "Au sommet d’une petite colline",
+    "option2": "À l’intérieur d’un tunnel",
+    "option3": "Sur un pont",
+    "option4": "Au milieu d’une rivière"
+  },
+  "Volcano9Quiz2": {
+    "title": "Que possédait le fortin pour surveiller la mer ?",
+    "option1": "Un poste d’observation",
+    "option2": "Un cinéma",
+    "option3": "Un clocher",
+    "option4": "Une bibliothèque"
+  },
+  "Volcano9Quiz3": {
+    "title": "Quelle structure entourait la colline ?",
+    "option1": "Une tranchée couverte",
+    "option2": "Une promenade maritime",
+    "option3": "Une route asphaltée",
+    "option4": "Une voie ferrée"
+  },
+
+  "Volcano10Quiz1": {
+    "title": "D’où partaient les attaques aériennes et maritimes contre la Catalogne ?",
+    "option1": "De Majorque",
+    "option2": "Du Garraf",
+    "option3": "De Roses",
+    "option4": "Du Foix"
+  },
+  "Volcano10Quiz2": {
+    "title": "Qui a planifié les défenses en Catalogne ?",
+    "option1": "Vicenç Guarner",
+    "option2": "José Matías",
+    "option3": "Maricel",
+    "option4": "Montcabrer"
+  },
+  "Volcano10Quiz3": {
+    "title": "Quand un réseau de fortins et de tranchées a-t-il été construit ?",
+    "option1": "1937 et 1938",
+    "option2": "1878 et 1885",
+    "option3": "1949 et 1950",
+    "option4": "1952 et 1953"
+  },
+
+  "Volcano11Quiz1": {
+    "title": "Quel secteur incluait Cunit, Calafell et El Vendrell ?",
+    "option1": "Secteur tarragonais",
+    "option2": "Secteur barcelonais",
+    "option3": "Secteur pyrénéen",
+    "option4": "Secteur central"
+  },
+  "Volcano11Quiz2": {
+    "title": "Quel danger était particulièrement important ici ?",
+    "option1": "Les attaques aériennes",
+    "option2": "Les attaques terrestres",
+    "option3": "Les tempêtes de sable",
+    "option4": "Les avalanches"
+  },
+  "Volcano11Quiz3": {
+    "title": "Quels navires sont mentionnés comme coulés ou attaqués en 1938 ?",
+    "option1": "Betis et Montcabrer",
+    "option2": "Maricel et Joven Rosita",
+    "option3": "Canarias et Terramar",
+    "option4": "Foix et Garraf"
+  },
+
+  "Volcano12Quiz1": {
+    "title": "Quelle “double histoire” ce lieu possède-t-il ?",
+    "option1": "Défense pendant la guerre puis maison familiale",
+    "option2": "École et hôpital moderne",
+    "option3": "Port commercial et usine",
+    "option4": "Parc d’attractions et cinéma"
+  },
+  "Volcano12Quiz2": {
+    "title": "Quand la famille Casas Perín est-elle arrivée au bunker ?",
+    "option1": "16 juillet 1949",
+    "option2": "18 juillet 1936",
+    "option3": "30 octobre 1936",
+    "option4": "8 août 1938"
+  },
+  "Volcano12Quiz3": {
+    "title": "Combien de meurtrières le bunker possédait-il ?",
+    "option1": "Trois",
+    "option2": "Deux",
+    "option3": "Une",
+    "option4": "Quatre"
+  },
+
+  "Volcano13Quiz1": {
+    "title": "Quel était l’objectif principal du bunker du Francàs ?",
+    "option1": "Contrôler l’accès maritime et renforcer la surveillance",
+    "option2": "Servir de marché",
+    "option3": "Être une bibliothèque",
+    "option4": "Être un terrain de sport"
+  },
+  "Volcano13Quiz2": {
+    "title": "À la mi-1937, qui assurait la surveillance principale ?",
+    "option1": "Les carabiniers",
+    "option2": "Les médecins",
+    "option3": "Les navigateurs sportifs",
+    "option4": "Les touristes"
+  },
+  "Volcano13Quiz3": {
+    "title": "D’où provenaient certaines incursions aériennes maintenant l’alerte ?",
+    "option1": "De Majorque",
+    "option2": "De France",
+    "option3": "D’Andorre",
+    "option4": "De Madrid"
+  },
+  "Mapp": {
+    "button1": "CARTE",
+    "button2": "LISTE",
+    "text1": "Commune",
+    "text2": "Centre d'interprétation du Romantisme",
+    "text3": "Tour Blava - Espace Guinovart"
+  },
+  "QuizPage": {
+    "try_again": "Essayer à nouveau",
+    "finding_1": "Guetteurs pour surveiller",
+    "finding_2": "Bunker Balmins",
+    "finding_3": "Porte-clés et clés des années 30 pour accéder au centre de commandement",
+    "finding_4": "Sacs de sable défensifs",
+    "finding_5": "Bunker Punta Mabrera",
+    "finding_6": "Chapeau des Carabiniers",
+    "finding_7": "Bunker Primera Roca",
+    "finding_8": "Bunker de l’embouchure de la rivière Foix",
+    "finding_9": "Maison-bunker de la Mota",
+    "finding_10": "Bunker de Cunit",
+    "finding_11": "Canon",
+    "finding_12": "Bunker des Madrigueres",
+    "finding_13": "Bunker du Francàs",
+    "description": "Retour à l'exploration de nouveaux points d'intérêt! Découvrez et interagissez avec chaque point pour débloquer des récompenses, gagner des points et progresser. Plus vous explorez, plus vous progressez.",
+    "button": "Continuez le jeu"
+  },
+  "intro": {
+    "title1": "Bienvenue dans le jeu « Les chemins secrets de la Pobla de Mafumet ». Écoutez Mafu, une tortue magique qui vit à la Pobla de Mafumet depuis 2000 ans.",
+    "text1": "Bienvenue dans le jeu “Canyelles et l’histoire de la météorite.” Écoute Roc, un fragment de la météorite tombée à Canyelles il y a presque deux cents ans.",
+    "title2": "Bienvenue dans le jeu « Les chemins secrets de la Pobla de Mafumet ». Écoutez Mafu, une tortue magique qui vit à la Pobla de Mafumet depuis 2000 ans.",
+    "text2": "Écoutez Roc et trouvez les fragments de météorite. Touchez-les pour les ramasser.",
+    "title3": "Cette expérience de réalité augmentée nécessite l'accès à l'appareil photo et aux capteurs de mouvement de votre appareil.",
+    "text3": "Écoutez Roc et lancez les roches volcaniques dans les volcans.",
+    "button1": "Passer l'introduction",
+    "button2": "Continuer",
+    "button3": "Expérience AR"
+  },
+  "CoinMap": {
+    "congratulation": "Félicitations !",
+    "text": "Vous êtes arrivé à destination avec succès. Vous êtes maintenant à la bonne distance pour vivre l’expérience de réalité augmentée.",
+    "button": "Suivant",
+    "p1u": "LE GARRAF",
+    "p1d": "SITGES",
+    "p2u": "BUNKER DE BALMINS",
+    "p2d": "SITGES",
+    "p3u": "BÂTIMENT MIRAMAR",
+    "p3d": "SITGES",
+    "p4u": "PLAGE DE LA BARRA",
+    "p4d": "SITGES",
+    "p5u": "BUNKER DE PUNTA MABRERA",
+    "p5d": "VILANOVA I LA GELTRÚ",
+    "p6u": "PARC DE RIBES ROGES",
+    "p6d": "VILANOVA I LA GELTRÚ",
+    "p7u": "BUNKER DU PREMIER ROCHER",
+    "p7d": "VILANOVA I LA GELTRÚ",
+    "p8u": "BUNKER DE L'EMBOUCHURE DU FLEUVE FOIX",
+    "p8d": "CUBELLES",
+    "p9u": "MAISON-BUNKER DE LA MOTA",
+    "p9d": "CUBELLES",
+    "p10u": "FORT DU TORRENT",
+    "p10d": "CUNIT",
+    "p11u": "PROMENADE MARITIME",
+    "p11d": "CALAFELL",
+    "p12u": "BUNKER DES TERRIERS",
+    "p12d": "EL VENDRELL",
+    "p13u": "BUNKER DU FRANCÀS",
+    "p13d": "EL VENDRELL"
+  },
+  "Caminslogin": {
+    "text": "Bonjour ! Je suis la Miula, la chouette de la mémoire, et je serai votre guide. Depuis très longtemps, je survole villages, chemins et paysages, en conservant les histoires cachées dans notre territoire. Les Chemins de la Mémoire vous invitent à parcourir des lieux réels afin de mieux comprendre notre passé récent. Chaque chemin nous rapproche de moments, de lieux et de vécus qui ont laissé une empreinte, même s’ils ne sont pas toujours visibles au premier regard. À travers ces parcours, vous découvrirez comment l’histoire a marqué la vie quotidienne de nombreuses personnes : ce qui a été construit, ce qui a été défendu, mais aussi ce qui a été souffert, ce qui a dû s’adapter et, souvent, ce qui a été vécu en silence. Vous n’écouterez pas seulement des histoires : vous y participerez. Tout au long des chemins, je vous proposerai des défis interactifs en réalité augmentée ainsi que des questions qui vous aideront à mieux observer chaque lieu et à comprendre ce qui s’y est passé. Au fil du parcours, vous pourrez obtenir des objets numériques à collectionner, liés aux sites que vous découvrirez. Chaque itinéraire met l’accent sur un aspect différent de la mémoire démocratique, mais tous partagent une même manière de regarder : marcher, observer, jouer et réfléchir. Il ne s’agit pas seulement d’arriver quelque part, mais de vivre le lieu et de comprendre pourquoi il fait partie de notre mémoire collective. Si vous m’accompagnez, je vous guiderai à travers les différents chemins, je vous expliquerai ce qui s’est passé dans chaque endroit et je vous aiderai à découvrir comment le passé dialogue encore avec le présent.Quand vous le souhaiterez, vous pourrez choisir par quel chemin commencer. À très bientôt !",
+    "button": "CONTINUER",
+    "ar": "Le voir en RA",
+    "game": "À quoi veux-tu jouer aujourd’hui ?",
+    "audio": "Activer l’audio ?",
+    "option1": "Oui",
+    "option2": "Non",
+    "info1": "Interagissez avec la Miula",
+    "info2": "Touchez et faites glisser avec un doigt pour la faire pivoter",
+    "info3": "Pincez avec deux doigts pour zoomer",
+    "sub1": "Masquer les sous-titres",
+    "sub2": "Afficher les sous-titres"
+  },
+  "Rutaintro": {
+    "text": "Je suis la Miula, la chouette de la mémoire, et depuis très longtemps je survole notre côte en conservant les histoires qui s’y cachent. Il y a de nombreuses années, pendant la guerre civile espagnole, sur la côte de Sitges, Vilanova i la Geltrú, Cubelles, Cunit, Calafell et El Vendrell, des bunkers, des tranchées et des fortifications ont été construits pour protéger les villages d’une possible attaque venant de la mer. Aujourd’hui, ces lieux nous aident à comprendre l’histoire et la vie quotidienne de cette époque, marquée par la peur, l’attente, l’organisation collective et les silences que beaucoup de personnes ont dû garder pour pouvoir survivre. Si vous m’accompagnez, je vous raconterai les histoires de chaque site et je vous aiderai à découvrir pourquoi ils sont si importants pour notre mémoire collective. Votre mission sera de m’aider à désactiver d’anciens engins explosifs grâce à la réalité augmentée. Une fois la mission accomplie, je vous poserai une question pour vérifier si vous avez bien été attentifs à mes explications.​ Si vous donnez la bonne réponse, vous recevrez un objet à collectionner en 3D, lié au lieu que vous venez de découvrir. Êtes-vous prêts ?​ Je vous attends aux différents points du parcours. À très bientôt !",
+    "button": "CONTINUER",
+    "ar": "Le voir en RA"
+  },
+  "Rutaend": {
+    "text": "Vous êtes arrivés à la fin du parcours. Tout au long de cette route, vous avez parcouru des lieux réels qui, durant une période difficile, faisaient partie du quotidien de nombreuses personnes. Des lieux de surveillance, d’organisation et d’attente, construits dans un but de protection, mais aussi marqués par la peur et l’incertitude. Chaque bunker, chaque tranchée et chaque fortification conserve des histoires qui n’ont pas toujours pu être racontées à voix haute. Des histoires de voisins et de voisines, de soldats, de familles entières qui ont appris à vivre avec le silence, avec l’alerte permanente et avec l’espoir que le conflit prenne fin. Aujourd’hui, grâce à votre regard et à votre curiosité, ces lieux reprennent la parole. Non pas comme des éléments de guerre, mais comme des témoins du passé qui nous aident à mieux comprendre le présent. Se souvenir, ce n’est pas regarder en arrière avec nostalgie, mais prendre conscience de ce qui s’est passé pour ne pas le reproduire. La mémoire démocratique se construit ainsi : en marchant, en écoutant et en partageant. Merci de m’avoir aidée à préserver ces histoires et de faire partie de cette route de mémoire. Je continuerai à survoler la côte, à garder ces récits et à attendre que d’autres personnes, comme vous, aient envie de les écouter. À la prochaine route.",
+    "button1": "Retour à « Els camins »",
+    "button2": "Retour à « Route de Défense »",
+    "button3": "Redémarrer"
+  },
+  "Description": {
+    "text1": "",
+    "text2": "Description",
+    "text3": "Le long de la côte du Garraf et du Baix Penedès, on trouve des lieux qui racontent une part importante de notre histoire récente. Des bunkers, des fortins et d’autres constructions défensives sont encore conservés sur le littoral, bien qu’ils passent souvent inaperçus. Cette route vous propose de découvrir ces sites et de comprendre pourquoi ils ont été construits pendant la guerre civile espagnole. À travers différents points répartis entre Sitges, Vilanova i la Geltrú, Cubelles, Cunit, Calafell et El Vendrell, vous découvrirez comment les villages se défendaient, comment se déroulait la vie quotidienne à cette époque et ce que ces lieux nous racontent aujourd’hui. Les points sont répartis sur plusieurs communes ; il est donc recommandé de réaliser le parcours par étapes, à votre rythme, en commençant où vous le souhaitez. Avec l’aide de Miula, vous observerez, écouterez et interagirez avec chaque lieu afin de comprendre pourquoi ces espaces font partie de notre mémoire collective.",
+    "text4": "Durée",
+    "text5": "5h",
+    "text6": "Communes",
+    "text7": "Sitges, Vilanova i la Geltrú, Cubelles, Cunit, Calafell et El Vendrell",
+    "text8": "Accessibilité",
+    "text9": "La majorité des points du parcours sont accessibles par des chemins, des promenades maritimes ou des zones urbaines, et peuvent être atteints sans difficulté particulière. L’un des points du parcours (bunker de Punta Mabrera, à Vilanova i la Geltrú) se situe dans une zone rocheuse du littoral, avec un accès plus irrégulier. Dans ce cas, l’accès peut être plus difficile pour les personnes à mobilité réduite ou avec des poussettes.",
+    "text10": "Recommandations",
+    "text11": "Cette expérience est conçue pour être partagée en famille ou en groupe, avec des enfants à partir de 8 ans, des jeunes et des adultes, afin que les contenus, les explications et les défis puissent être commentés et réfléchis ensemble. Le parcours peut être réalisé tranquillement et à votre rythme. Il n’est pas nécessaire de visiter tous les points en une seule journée, car les sites sont répartis le long du littoral et chaque étape constitue une découverte indépendante. Certains points se trouvent en plein air, à proximité de la mer. Il est recommandé de porter des chaussures confortables, une protection solaire et de l’eau, surtout pendant les mois les plus chauds. Les lieux du parcours font partie du paysage et du patrimoine. Nous vous demandons de les observer avec respect et de ne laisser aucun déchet. En cas de visite avec des enfants, la supervision d’une personne adulte est recommandée, en particulier dans les zones proches de la côte."
+  },
+  "gameText": {
+    "place": "Placer l'Avatar",
+    "audioPermission": "Autorisation audio requise",
+    "cameraPermission": "Autorisation caméra requise",
+    "audioAllow": "Autoriser l'audio",
+    "Cancel": "Annuler",
+    "enableRotation": "Activer la rotation",
+    "try_again": "Réessayer",
+    "coins": "Pièces"
+  },
+  "privacyPolicy": {
+    "title": "Politique de Confidentialité",
+    "sections": {
+      "responsible": {
+        "title": "Responsable du traitement",
+        "content": "En conformité avec le Règlement (UE) 2016/679 (RGPD) et la Loi Organique 3/2018 (LOPDGDD), il est porté à votre connaissance que les données personnelles fournies via l'application seront traitées sous la responsabilité de l'entité suivante :",
+        "items": [
+          "Nom commercial : Som Experiències",
+          "Nom fiscal : Albert Mozó Fàbregas",
+          "NIF : 45790766C",
+          "Adresse : Rambla Lluís Companys, 2, 2n 5a, 08800 Vilanova i la Geltrú",
+          "Nom et NIF du contact : Albert Mozó Fàbregas – NIF 45790766C",
+          "Téléphone : 685492584",
+          "Email : info@somexperiencies.cat"
+        ]
+      },
+      "dataCollected": {
+        "title": "Données collectées",
+        "content": "L'application peut collecter les données personnelles suivantes auprès des utilisateurs :",
+        "items": [
+          "Via l'inscription avec Google ou Microsoft : nom, prénom et adresse e-mail.",
+          "Via un formulaire personnalisé : nom, prénom, adresse e-mail, téléphone et lieu de provenance.",
+          "Via les permissions de l'appareil : géolocalisation (pour débloquer les points de jeu) et accès à la caméra (pour les fonctionnalités de réalité augmentée)."
+        ]
+      },
+      "purpose": {
+        "title": "Finalité du traitement",
+        "content": "Les données sont traitées aux fins suivantes :",
+        "items": [
+          "Permettre l'accès et l'utilisation de l'application et de ses contenus interactifs.",
+          "Garantir l'activation des points de jeu et la personnalisation de l'expérience.",
+          "Maintenir la sécurité et améliorer les services offerts.",
+          "Communiquer des nouveautés ou des informations liées à l'application, avec le consentement préalable de l'utilisateur."
+        ]
+      },
+      "legalBasis": {
+        "title": "Base légale",
+        "content": "La base juridique du traitement est le consentement de l'utilisateur, accordé lors de l'inscription et de l'acceptation de cette politique de confidentialité."
+      },
+      "dataRetention": {
+        "title": "Conservation des données",
+        "content": "Les données seront conservées uniquement pendant la durée nécessaire à la prestation du service et, en tout état de cause, pendant les délais légalement établis. Les données de géolocalisation et les images de la caméra ne sont pas sauvegardées au-delà de l'usage temporaire sur l'appareil."
+      },
+      "dataSharing": {
+        "title": "Communication des données à des tiers",
+        "content": "Les données ne seront pas cédées à des tiers, sauf en cas d'obligation légale ou de demande d'une autorité compétente."
+      },
+      "userRights": {
+        "title": "Droits des utilisateurs",
+        "content": "Les utilisateurs peuvent exercer leurs droits d'accès, de rectification, de suppression, d'opposition, de limitation et de portabilité en contactant le responsable à l'adresse info@somexperiencies.cat ou par courrier postal à l'adresse indiquée ci-dessus."
+      },
+      "effect": {
+        "title": "Effet",
+        "content": "L'utilisation de l'application implique l'acceptation expresse et pleine de la présente politique de confidentialité. Cette politique entre en vigueur à partir de sa date de publication et restera valable jusqu'à ce qu'elle soit modifiée ou mise à jour dans cette même application."
+      }
+    }
+  }
+}

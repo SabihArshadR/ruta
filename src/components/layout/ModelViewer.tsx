@@ -1,0 +1,401 @@
+"use client";
+
+import {
+  Circle,
+  Environment,
+  OrbitControls,
+  useProgress,
+} from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import React, {
+  Suspense,
+  useEffect,
+  useState,
+  Component,
+  ReactNode,
+  memo,
+  useMemo,
+  useRef,
+} from "react";
+import * as THREE from "three";
+import { GLTFLoader } from "three-stdlib";
+import { DRACOLoader } from "three-stdlib";
+
+/* ------------------ Loading Spinner ------------------ */
+function Loading() {
+  const { progress } = useProgress();
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-white z-20">
+      <div className="text-center">
+        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        {/* <p className="mt-4 text-gray-700 font-medium">
+                    Loading model... {Math.round(progress)}%
+                </p> */}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------ Error Boundary ------------------ */
+class ModelErrorBoundary extends Component<
+  { children: ReactNode; onRetry?: () => void },
+  { hasError: boolean; error?: Error }
+> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error("❌ ModelViewer Error:", error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="absolute inset-0 flex items-center justify-center flex-col gap-4">
+          <p className="text-red-500 font-semibold text-lg">
+            ❌ Failed to load 3D model
+          </p>
+          <p className="text-gray-600 text-sm">
+            {this.state.error?.message ||
+              "Model may be too large or corrupted."}
+          </p>
+          <button
+            onClick={() => {
+              this.setState({ hasError: false, error: undefined });
+              this.props.onRetry?.();
+            }}
+            className="px-6 py-2 bg-blue-500 text-white rounded-lg transition-all duration-400 ease-in-out hover:brightness-150 active:brightness-150 active:-translate-y-[5px]"
+          >
+            Try Again
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+/* ------------------ Safe Model Loader ------------------ */
+interface SafeModelProps {
+  modelPath: string;
+  rotation?: [number, number, number];
+  position?: [number, number, number];
+}
+
+function SafeModel({
+  modelPath,
+  rotation = [0, 0, 0],
+  position = [0, 0, 0],
+}: SafeModelProps) {
+  const [scene, setScene] = useState<THREE.Group | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    const loader = new GLTFLoader();
+
+    // Attach DRACOLoader (safe even if the model isn't compressed)
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath(
+      "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+    );
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load(
+      modelPath,
+      (gltf) => {
+        if (!isMounted) return;
+        setScene(gltf.scene);
+      },
+      undefined,
+      (err) => {
+        console.error("❌ GLTFLoader failed:", err);
+        if (isMounted)
+          setError("Model failed to load: " + (err as any).message);
+      }
+    );
+
+    return () => {
+      isMounted = false;
+      if (scene) {
+        scene.traverse((child: any) => {
+          if (child.isMesh) {
+            child.geometry?.dispose();
+            if (Array.isArray(child.material)) {
+              child.material.forEach((m: THREE.Material) => m.dispose());
+            } else {
+              child.material?.dispose();
+            }
+          }
+        });
+      }
+    };
+  }, [modelPath]);
+
+  if (error) {
+    return (
+      <mesh>
+        <boxGeometry args={[0.2, 0.2, 0.2]} />
+        <meshBasicMaterial color="red" />
+      </mesh>
+    );
+  }
+
+  if (!scene) return null;
+  return <primitive object={scene} position={position} rotation={rotation} />;
+}
+
+/* ------------------ Optimized Canvas ------------------ */
+function OptimizedCanvas({
+  modelPath,
+  rotation,
+  position,
+  backgroundColor = "transparent",
+  environment = "apartment",
+  enableZoom = true,
+  enableRotate = true,
+  showFloor = true,
+  zoomMode = "normal",
+  isOpen,
+}: {
+  modelPath: string;
+  rotation?: [number, number, number];
+  position?: [number, number, number];
+  backgroundColor?: string;
+  environment?: string;
+  enableZoom?: boolean;
+  enableRotate?: boolean;
+  showFloor?: boolean;
+  zoomMode?: "moreless" | "less" | "normal" | "large";
+  isOpen: boolean;
+}) {
+  const zoomPresets = {
+    moreless: {
+      min: 5,
+      max: 10,
+      cam: [0.3, 0.5, 6] as [number, number, number],
+      target: [0, 1, 0] as [number, number, number],
+    },
+    less: {
+      min: 0.8,
+      max: 3,
+      cam: [0.5, 0.5, 3.5] as [number, number, number],
+      target: [0, 1, 0] as [number, number, number],
+    },
+    normal: {
+      min: 0.8,
+      max: 2.5,
+      cam: [0.5, 0.5, 3.5] as [number, number, number],
+      target: [0, 0.8, 0] as [number, number, number],
+    },
+    large: {
+      min: 0.05,
+      max: 0.5,
+      cam: [20, 300, 0] as [number, number, number],
+      target: [0, 0.8, 0] as [number, number, number],
+    },
+  };
+
+  const { min, max, cam, target } = zoomPresets[zoomMode];
+
+  const cameraConfig = useMemo(
+    () => ({
+      position: cam as [number, number, number],
+      fov: 45,
+      near: 0.005,
+      far: 1000,
+    }),
+    []
+  );
+
+  const getBaseUrl = () => {
+    if (typeof window !== "undefined") {
+      return window.location.origin;
+    }
+    return process.env.NEXTAUTH_URL || "http://localhost:3000";
+  };
+
+  const HOST = getBaseUrl();
+
+  const [autoRotate, setAutoRotate] = useState(true);
+  const controlsRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setAutoRotate(true);
+    }
+  }, [isOpen]);
+
+  const handleStart = () => {
+    setAutoRotate(false);
+  };
+  useEffect(() => {
+    const currentControls = controlsRef.current;
+    if (currentControls) {
+      currentControls.addEventListener("start", handleStart);
+    }
+    return () => {
+      if (currentControls) {
+        currentControls.removeEventListener("start", handleStart);
+      }
+    };
+  }, []);
+
+  // Restrict rotation for specific models
+  const restrictedModels = [
+    `${HOST}/models/2.glb`,
+    `${HOST}/models/4.glb`,
+    `${HOST}/models/5.glb`,
+    `${HOST}/models/7.glb`,
+    `${HOST}/models/8.glb`,
+    `${HOST}/models/9.glb`,
+    `${HOST}/models/10.glb`,
+    `${HOST}/models/12.glb`,
+    `${HOST}/models/13.glb`,
+  ];
+
+  const isRestricted = restrictedModels.includes(modelPath);
+
+  return (
+    <Canvas
+      camera={cameraConfig}
+      gl={{ powerPreference: "high-performance" , alpha: true }}
+      // dpr={[1, 2]}
+      dpr={1}
+    >
+      {/* <color attach="background" args={[backgroundColor]} /> */}
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[5, 5, 5]} intensity={0.5} castShadow />
+      <ModelErrorBoundary>
+        <SafeModel
+          modelPath={modelPath}
+          rotation={rotation}
+          position={position}
+        />
+      </ModelErrorBoundary>
+      {showFloor && (
+        <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow>
+          <meshStandardMaterial color="transparent" />
+        </Circle>
+      )}
+      <Environment preset={environment as any} />
+      <OrbitControls
+        ref={controlsRef}
+        autoRotate={autoRotate}
+        autoRotateSpeed={1.0}
+        target={target}
+        enablePan={true}
+        enableZoom={enableZoom}
+        enableRotate={enableRotate}
+        minDistance={min}
+        maxDistance={max}
+        // minPolarAngle={Math.PI / 2.5}
+        // maxPolarAngle={Math.PI / 1.6}
+        minPolarAngle={isRestricted ? Math.PI / 2 : 0} 
+        maxPolarAngle={isRestricted ? Math.PI / 2 : Math.PI}
+        onStart={() => setAutoRotate(false)}
+      />
+    </Canvas>
+  );
+}
+
+/* ------------------ Main Viewer ------------------ */
+interface ModelViewerProps {
+  modelPath: string;
+  rotation?: [number, number, number];
+  position?: [number, number, number];
+  isOpen: boolean;
+  onClose: () => void;
+  backgroundColor?: string;
+  showFloor?: boolean;
+  className?: string;
+  environment?: string;
+  enableZoom?: boolean;
+  enableRotate?: boolean;
+  zoomMode: "moreless" | "less" | "normal" | "large";
+}
+
+function ModelViewerComponent({
+  modelPath,
+  rotation,
+  position,
+  isOpen,
+  onClose,
+  backgroundColor = "transparent",
+  showFloor = false,
+  className = "",
+  environment = "apartment",
+  enableZoom = true,
+  enableRotate = true,
+  zoomMode = "normal",
+}: ModelViewerProps) {
+  if (!isOpen) return null;
+  // Extract model number from modelPath
+  const getModelNumber = (path: string): string | null => {
+    const match = path.match(/\/(\d+)\.glb/);
+    return match ? match[1] : null;
+  };
+
+  // Get background image path based on model number
+  const modelNumber = getModelNumber(modelPath);
+  const backgroundImage = modelNumber ? `/backgroundImage/${modelNumber}.jpg` : null;
+
+  return (
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ${
+        isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+      } ${className}`}
+      style={backgroundImage ? {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      } : {}}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="relative rounded-2xl shadow-2xl w-[95vw] h-[90vh] overflow-hidden">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 bg-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center shadow-md z-30 hover:bg-gray-100"
+        >
+          ✕
+        </button>
+        <Suspense fallback={<Loading />}>
+          <div className="relative w-full h-full">
+            {backgroundImage && (
+              <div 
+                className="absolute inset-0 z-0"
+                style={{
+                  backgroundImage: `url(${backgroundImage})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  // filter: 'blur(8px) brightness(0.7)',
+                  transform: 'scale(1.1)',
+                }}
+              />
+            )}
+            <div className="relative z-10 w-full h-full">
+              <OptimizedCanvas
+                modelPath={modelPath}
+                rotation={rotation as [number, number, number]}
+                position={position as [number, number, number]}
+                backgroundColor="transparent"
+                environment={environment}
+                enableZoom={enableZoom}
+                enableRotate={enableRotate}
+                showFloor={showFloor}
+                zoomMode={zoomMode as any}
+                isOpen={isOpen}
+              />
+            </div>
+          </div>
+        </Suspense>
+      </div>
+    </div>
+  );
+}
+
+export default memo(ModelViewerComponent);
