@@ -149,6 +149,19 @@ const Page = () => {
   }, []);
 
   useEffect(() => {
+    if (hasInitialized.current) return;
+
+    const timer = setTimeout(() => {
+      if (backgroundMusicRef.current) {
+        backgroundMusicRef.current.loop = true;
+        backgroundMusicRef.current.volume = 0.08;
+        backgroundMusicRef.current.play().catch(() => {});
+      }
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
       const handleFirstInteraction = () => {
         backgroundMusicRef.current?.play().catch(() => {});
