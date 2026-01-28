@@ -148,6 +148,7 @@ const Page = () => {
     })();
   }, []);
 
+
   useEffect(() => {
     if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
       const handleFirstInteraction = () => {
@@ -157,33 +158,15 @@ const Page = () => {
           explosionAudioRef.current.currentTime = 0;
         }
         // this is start
-        // if (backgroundMusicRef.current && !isAudioPlaying) {
-        //   backgroundMusicRef.current.volume = 0.05;
-        //   backgroundMusicRef.current.loop = true;
-        //   backgroundMusicRef.current
-        //     .play()
-        //     .then(() => setIsAudioPlaying(true))
-        //     .catch(() => {}); // ignore – browser may still block in rare cases
-        // }
-        // this is end
-
-        // Unlock and start background music if it is currently muted / blocked
-        if (backgroundMusicRef.current) {
+        if (backgroundMusicRef.current && !isAudioPlaying) {
           backgroundMusicRef.current.volume = 0.05;
           backgroundMusicRef.current.loop = true;
-          const playPromise = backgroundMusicRef.current.play();
-          
-          if (playPromise !== undefined) {
-            playPromise
-              .then(() => {
-                console.log('Background music started successfully');
-                setIsAudioPlaying(true);
-              })
-              .catch(error => {
-                console.log('Autoplay was prevented:', error);
-                // Show a UI element to let the user start the music
-              });
-          }
+          backgroundMusicRef.current
+            .play()
+            .then(() => setIsAudioPlaying(true))
+            .catch(() => {}); // ignore – browser may still block in rare cases
+        }
+        // this is end
 
         hasAutoPlayed.current = true;
         window.removeEventListener("click", handleFirstInteraction);
@@ -193,38 +176,8 @@ const Page = () => {
       window.addEventListener("touchstart", handleFirstInteraction, {
         once: true,
       });
-    }}
+    }
   }, [user, locale]);
-
-  // useEffect(() => {
-  //   if (user?.POIsCompleted >= 0 && !hasAutoPlayed.current) {
-  //     const handleFirstInteraction = () => {
-  //       if (explosionAudioRef.current) {
-  //         explosionAudioRef.current.play().catch(() => {});
-  //         explosionAudioRef.current.pause();
-  //         explosionAudioRef.current.currentTime = 0;
-  //       }
-  //       // this is start
-  //       if (backgroundMusicRef.current && !isAudioPlaying) {
-  //         backgroundMusicRef.current.volume = 0.05;
-  //         backgroundMusicRef.current.loop = true;
-  //         backgroundMusicRef.current
-  //           .play()
-  //           .then(() => setIsAudioPlaying(true))
-  //           .catch(() => {}); // ignore – browser may still block in rare cases
-  //       }
-  //       // this is end
-
-  //       hasAutoPlayed.current = true;
-  //       window.removeEventListener("click", handleFirstInteraction);
-  //       window.removeEventListener("touchstart", handleFirstInteraction);
-  //     };
-  //     window.addEventListener("click", handleFirstInteraction, { once: true });
-  //     window.addEventListener("touchstart", handleFirstInteraction, {
-  //       once: true,
-  //     });
-  //   }
-  // }, [user, locale]);
 
   useEffect(() => {
     if (!onLoadPoints && user?.points) setOnLoadPoints(user.points);
